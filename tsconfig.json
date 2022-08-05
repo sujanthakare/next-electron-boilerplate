@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -17,12 +15,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@data-adapter/*": ["data-adapter/*"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "renderer/next.config.js",
-    "app",
-    "dist"
-  ]
+  "exclude": ["node_modules", "renderer/next.config.js", "app", "dist"]
 }

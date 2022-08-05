@@ -38,4 +38,4 @@ app.on("window-all-closed", () => {
 });
 
 // Register node background code
-require("../domain/data-adapter/register");
+require("../data-adapter");
