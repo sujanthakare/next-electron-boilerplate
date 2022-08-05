@@ -1,32 +1,34 @@
-import React, { useEffect } from "react";
-import Head from "next/head";
-import Link from "next/link";
-import { ipcRenderer } from "electron";
-import { addUser } from "../data/user";
+import React from "react";
+
+import { addUser, fetchUsers } from "../data/user";
+import { Button } from "@mui/material";
 
 function Home() {
-  useEffect(() => {
-    addUser({
-      name: "sujan",
-    }).then((user) => {
-      console.log("USER", user);
-    });
-  }, []);
-
   return (
     <React.Fragment>
-      <Head>
-        <title>Home - Nextron (with-typescript)</title>
-      </Head>
-      <div>
-        <p>
-          ⚡ Electron + Next.js ⚡ -
-          <Link href="/next">
-            <a>Go to next page</a>
-          </Link>
-        </p>
-        <img src="/images/logo.png" />
-      </div>
+      <Button
+        variant="contained"
+        onClick={() => {
+          fetchUsers().then((users) => {
+            console.log("users", users);
+          });
+        }}
+      >
+        refresh users
+      </Button>
+
+      <Button
+        variant="contained"
+        onClick={() => {
+          addUser({
+            name: "sujan",
+          }).then((user) => {
+            console.log("USER", user);
+          });
+        }}
+      >
+        Add user
+      </Button>
     </React.Fragment>
   );
 }

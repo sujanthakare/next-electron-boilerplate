@@ -1,11 +1,20 @@
-type Methods = "add-user" | "get-user";
+import db from "../db";
 
-export default async function userController(method: Methods) {
+type Methods = "add-user" | "get-users" | "index";
+
+export default async function userController(method: Methods, args) {
   if (method === "add-user") {
-    return {
-      name: "sujan thakare",
-    };
+    return db.user.create({
+      data: {
+        email: "sujandt@gmail.com",
+        name: args.name,
+      },
+    });
   }
 
-  if (method) throw "Method not found";
+  if (method === "get-users") {
+    return db.user.findMany();
+  }
+
+  throw "Method not found";
 }

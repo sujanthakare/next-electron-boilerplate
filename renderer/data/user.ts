@@ -11,3 +11,10 @@ export const addUser = (user: User) => {
     args: { name: "sujan" },
   });
 };
+
+export const fetchUsers = () => {
+  return execute({
+    controller: "user",
+    method: "get-users",
+  });
+};
