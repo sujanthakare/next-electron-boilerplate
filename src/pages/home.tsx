@@ -1,16 +1,16 @@
-import React from "react";
-import { Button } from "@mui/material";
-import { execute } from "renderer/data-bridge";
-import { ThemeContextProvider } from "renderer/ui/theme";
+import React from 'react'
+import { Button } from '@mui/material'
+import { execute } from '../data-bridge'
+import { ThemeContextProvider } from '@/ui/theme'
 
 function Home() {
   return (
     <ThemeContextProvider>
       <div
         style={{
-          height: "100vh",
-          backgroundColor: "black",
-          width: "100%",
+          height: '100vh',
+          backgroundColor: 'black',
+          width: '100%',
         }}
       >
         <React.Fragment>
@@ -18,11 +18,11 @@ function Home() {
             variant="contained"
             onClick={() => {
               execute({
-                controller: "user",
-                method: "getUsers",
+                controller: 'user',
+                method: 'getUsers',
               }).then((res) => {
-                console.log("users", res);
-              });
+                console.log('users', res)
+              })
             }}
           >
             refresh users
@@ -32,18 +32,18 @@ function Home() {
             variant="contained"
             onClick={() => {
               execute({
-                controller: "user",
-                method: "addUser",
+                controller: 'user',
+                method: 'addUser',
                 body: {
-                  name: "sujan",
+                  name: 'sujan',
                 },
               })
                 .then((user) => {
-                  console.log("USER", user);
+                  console.log('USER', user)
                 })
                 .catch((e) => {
-                  console.log("error", e);
-                });
+                  console.log('error', e)
+                })
             }}
           >
             Add user
@@ -51,7 +51,7 @@ function Home() {
         </React.Fragment>
       </div>
     </ThemeContextProvider>
-  );
+  )
 }
 
-export default Home;
+export default Home
