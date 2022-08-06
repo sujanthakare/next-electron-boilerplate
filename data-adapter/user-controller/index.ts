@@ -1,20 +1,20 @@
-import BaseController from "../base-controller";
-import db from "../db";
+import BaseController from '../base-controller'
+import db from '../db'
 
 type AddUserMethod = {
-  method: "addUser";
-  body: { name: string };
-};
+  method: 'addUser'
+  body: { name: string }
+}
 
 type GetUsersMethod = {
-  method: "getUsers";
-};
+  method: 'getUsers'
+}
 
-type Methods = AddUserMethod | GetUsersMethod;
+type Methods = AddUserMethod | GetUsersMethod
 
 export type UserControllerConfig = {
-  controller: "user";
-} & Methods;
+  controller: 'user'
+} & Methods
 
 export default class UserController extends BaseController {
   /**
@@ -23,10 +23,10 @@ export default class UserController extends BaseController {
   async addUser(callConfig: AddUserMethod) {
     return db.user.create({
       data: {
-        email: "sujandt@gmail.com",
+        email: 'sujandt@gmail.com',
         name: callConfig.body.name,
       },
-    });
+    })
   }
 
   /**
@@ -34,6 +34,6 @@ export default class UserController extends BaseController {
    *
    */
   async getUsers() {
-    return db.user.findMany();
+    return db.user.findMany()
   }
 }

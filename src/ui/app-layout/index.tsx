@@ -6,24 +6,14 @@ const AppLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     <div
       css={{
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         height: '100vh',
         backgroundColor: '#E5E5E5',
+        maxHeight: '100vh',
+        overflow: 'hidden',
+        width: '100%',
       }}
     >
-      <Box
-        sx={{
-          maxHeight: '100vh',
-          height: 1400,
-          backgroundColor: 'white',
-          overflow: 'hidden',
-          maxWidth: 1200,
-          width: '100%',
-        }}
-      >
-        {children}
-      </Box>
+      {children}
     </div>
   )
 }

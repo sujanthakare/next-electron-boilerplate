@@ -1,21 +1,21 @@
-import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
-import { ReactNode } from "react";
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
+import { ReactNode } from 'react'
 
-import colorPalette, { ColorPalette } from "./colorPalette";
-import { BoxShadows, RoundCorners, boxShadows, roundCorners } from "./effects";
-import { defaultFontFamily, fontSource } from "./fonts";
+import colorPalette, { ColorPalette } from './colorPalette'
+import { BoxShadows, RoundCorners, boxShadows, roundCorners } from './effects'
+import { defaultFontFamily, fontSource } from './fonts'
 
 export interface ITheme {
-  colors: ColorPalette;
-  boxShadows: BoxShadows;
-  roundCorners: RoundCorners;
+  colors: ColorPalette
+  boxShadows: BoxShadows
+  roundCorners: RoundCorners
 }
 
 export const defaultTheme: ITheme = {
   colors: colorPalette,
   boxShadows,
   roundCorners,
-};
+}
 
 const theme = createTheme({
   typography: {
@@ -31,19 +31,27 @@ const theme = createTheme({
     MuiIcon: {
       styleOverrides: {
         root: {
-          height: "1.1em",
-          width: "1em",
-          ":before": {
-            lineHeight: "1.1em",
+          height: '1.1em',
+          width: '1em',
+          ':before': {
+            lineHeight: '1.1em',
           },
         },
       },
       defaultProps: {
-        baseClassName: "fi",
+        baseClassName: 'fi',
       },
     },
     MuiCssBaseline: {
       styleOverrides: `
+        * {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          vertical-align: baseline;
+          text-decoration: none;
+        }
+
         @font-face {
           font-family: '${defaultFontFamily}';
           src: url(${fontSource.REGULAR}), url(${fontSource.BOLD}), url(${fontSource.ITALIC}), url(${fontSource.LIGHT}), url(${fontSource.MEDIUM});
@@ -62,17 +70,17 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#0078d4",
-      dark: "#005a9e",
+      main: '#0078d4',
+      dark: '#005a9e',
     },
     secondary: {
-      main: "#f50057",
+      main: '#f50057',
     },
   },
   shape: {
     borderRadius: 0,
   },
-});
+})
 
 export const ThemeContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -82,5 +90,5 @@ export const ThemeContextProvider: React.FC<{ children: ReactNode }> = ({
       <CssBaseline />
       {children}
     </ThemeProvider>
-  );
-};
+  )
+}
