@@ -12,7 +12,6 @@ import {
   IconButton,
   Container,
 } from '@mui/material'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 type Props = {
@@ -39,32 +38,12 @@ const FreelancerLayout = (props: Props) => {
         </Container>
       </AppBar>
       <Stack direction="row" sx={{ height: '100%' }}>
-        <Box
-          sx={{
-            width: 240,
-            borderRight: '1px solid grey',
-          }}
-        >
+        <Box sx={{ width: 240, borderRight: '1px solid grey' }}>
           <List>
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  router.push('/freelancer/projects')
-                  // href="/freelancer/projects"
-                }}
-                selected={props.currentPath === '/freelancer/projects'}
-              >
-                <ListItemIcon>
-                  <Icon className="fi fi-rr-envelope" />
-                </ListItemIcon>
-                <ListItemText primary="Projects" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton
-                onClick={() => {
                   router.push('/freelancer')
-                  // href="/freelancer/projects"
                 }}
                 selected={props.currentPath === '/freelancer'}
               >
@@ -72,6 +51,20 @@ const FreelancerLayout = (props: Props) => {
                   <Icon className="fi fi-rr-envelope" />
                 </ListItemIcon>
                 <ListItemText primary="home" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton
+                onClick={() => {
+                  router.push('/freelancer/projects')
+                }}
+                selected={props.currentPath === '/freelancer/projects'}
+              >
+                <ListItemIcon>
+                  <Icon className="fi fi-rr-envelope" />
+                </ListItemIcon>
+                <ListItemText primary="Projects" />
               </ListItemButton>
             </ListItem>
           </List>

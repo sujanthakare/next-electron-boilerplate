@@ -1,6 +1,5 @@
-import FreelancerLayout from '@/ui/freelance-layout'
+import { useRouter } from '@/client/ui/simple-routing'
 import { Box, Button } from '@mui/material'
-import { useRouter } from 'next/router'
 
 const Home = () => {
   const router = useRouter()

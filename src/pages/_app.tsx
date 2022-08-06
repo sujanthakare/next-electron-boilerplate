@@ -2,8 +2,8 @@ import React from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import { ThemeContextProvider } from '../ui/theme'
-import AppLayout from '../ui/app-layout'
+import { ThemeContextProvider } from '@/client/ui/theme'
+import AppLayout from '@/client/ui/app-layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

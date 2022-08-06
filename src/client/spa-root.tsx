@@ -1,11 +1,10 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { FlexRoute, FlexRouterProvider } from '@/ui/simple-routing'
-import Projects from './freelancer-projects'
-import Home from './home'
-
-const Freelancer = dynamic(() => import('./freelancer'))
+import Home from './routes/home'
+import Freelancer from './routes/freelancer'
+import Projects from './routes/freelancer/projects'
+import AddProject from './routes/freelancer/projects/add'
+import { Route, Routes, StaticRouter } from './ui/simple-routing'
 
 const routeState = {
   currentPath: '',
@@ -24,11 +23,16 @@ const SPARoot = () => {
     routeState.currentPath = currentPath
 
     return (
-      <FlexRouterProvider location={currentPath}>
-        <FlexRoute path="/home" element={<Home />} />
-        <FlexRoute path="/freelancer" element={<Freelancer />} />
-        <FlexRoute path="/freelancer/projects" element={<Projects />} />
-      </FlexRouterProvider>
+      <StaticRouter location={currentPath}>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/freelancer" element={<Freelancer />}>
+            <Route path="/freelancer/projects" element={<Projects />}>
+              <Route path="/freelancer/projects/add" element={<AddProject />} />
+            </Route>
+          </Route>
+        </Routes>
+      </StaticRouter>
     )
   }
 }

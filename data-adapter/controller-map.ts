@@ -1,11 +1,15 @@
-import BaseController from "./base-controller";
-import UserController, { UserControllerConfig } from "./user-controller";
+import BaseController from './base-controller'
+import ProjectController, {
+  ProjectControllerConfig,
+} from './project-controller'
+import UserController, { UserControllerConfig } from './user-controller'
 
-export type ControllerConfig = UserControllerConfig;
+export type ControllerConfig = UserControllerConfig | ProjectControllerConfig
 
 export const controllerMap: Record<
-  ControllerConfig["controller"],
+  ControllerConfig['controller'],
   typeof BaseController
 > = {
   user: UserController,
-};
+  project: ProjectController,
+}

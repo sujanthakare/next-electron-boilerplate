@@ -1,5 +1,5 @@
 import { ipcRenderer } from 'electron'
-import { ControllerConfig } from '../data-adapter/controller-map'
+import { ControllerConfig } from '../../data-adapter/controller-map'
 
 export const execute = (
   payload: ControllerConfig
