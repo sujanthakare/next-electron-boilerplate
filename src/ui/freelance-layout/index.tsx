@@ -12,6 +12,8 @@ import {
   IconButton,
   Container,
 } from '@mui/material'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 type Props = {
   children: ReactNode
@@ -19,6 +21,8 @@ type Props = {
 }
 
 const FreelancerLayout = (props: Props) => {
+  const router = useRouter()
+
   return (
     <Box sx={{ width: '100%' }}>
       <AppBar position="relative">
@@ -44,14 +48,30 @@ const FreelancerLayout = (props: Props) => {
           <List>
             <ListItem disablePadding>
               <ListItemButton
-                LinkComponent="a"
-                href="/freelancer/projects"
+                onClick={() => {
+                  router.push('/freelancer/projects')
+                  // href="/freelancer/projects"
+                }}
                 selected={props.currentPath === '/freelancer/projects'}
               >
                 <ListItemIcon>
                   <Icon className="fi fi-rr-envelope" />
                 </ListItemIcon>
                 <ListItemText primary="Projects" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton
+                onClick={() => {
+                  router.push('/freelancer')
+                  // href="/freelancer/projects"
+                }}
+                selected={props.currentPath === '/freelancer'}
+              >
+                <ListItemIcon>
+                  <Icon className="fi fi-rr-envelope" />
+                </ListItemIcon>
+                <ListItemText primary="home" />
               </ListItemButton>
             </ListItem>
           </List>

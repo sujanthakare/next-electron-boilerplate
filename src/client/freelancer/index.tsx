@@ -5,7 +5,7 @@ const Freelancer = () => {
   return (
     <FreelancerLayout currentPath="/freelancer">
       <Box>
-        <h1>WATCH </h1>
+        <h1>Freelancer home</h1>
       </Box>
     </FreelancerLayout>
   )

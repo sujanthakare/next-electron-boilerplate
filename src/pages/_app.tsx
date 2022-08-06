@@ -1,9 +1,9 @@
-import React from "react";
-import type { AppProps } from "next/app";
-import Head from "next/head";
+import React from 'react'
+import type { AppProps } from 'next/app'
+import Head from 'next/head'
 
-import { ThemeContextProvider } from "../ui/theme";
-import AppLayout from "../ui/app-layout";
+import { ThemeContextProvider } from '../ui/theme'
+import AppLayout from '../ui/app-layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </ThemeContextProvider>
       </AppLayout>
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
