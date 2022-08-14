@@ -11,17 +11,26 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id      Int       @id @default(autoincrement())
+  email   String    @unique
+  name    String?
+  Project Project[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
+model Project {
+  id              Int               @id @default(autoincrement())
+  owner           User              @relation(fields: [ownerId], references: [id])
+  ownerId         Int
+  name            String
+  TimeReportEntry TimeReportEntry[]
+}
+
+model TimeReportEntry {
+  id        Int      @id @default(autoincrement())
+  project   Project  @relation(fields: [projectId], references: [id])
+  projectId Int
   title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  date      DateTime
+  hours     Int
+  rate      Int
 }

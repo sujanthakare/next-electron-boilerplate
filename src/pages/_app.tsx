@@ -1,9 +1,11 @@
 import React from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-
-import { ThemeContextProvider } from '@/client/ui/theme'
-import AppLayout from '@/client/ui/app-layout'
+import AppLayout from '@/ui/app-layout'
+import { ThemeProvider } from '@/ui/theme-provider'
+import '@/ui/theme-provider/assets.css'
+import { Provider } from 'react-redux'
+import store from '@/data/store'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,12 +17,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
         />
       </Head>
-
-      <AppLayout>
-        <ThemeContextProvider>
-          <Component {...pageProps} />
-        </ThemeContextProvider>
-      </AppLayout>
+      <Provider store={store}>
+        <AppLayout>
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </AppLayout>
+      </Provider>
     </>
   )
 }

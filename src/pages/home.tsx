@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import SPARoot from '@/client/spa-root'
+import SPARoot from '@/routes/spa-root'
 
 const Root: NextPage = () => {
   return <SPARoot />

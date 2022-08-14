@@ -1,4 +1,4 @@
-export const VIEW_PORT_MAX_WIDTH = "114rem";
+export const VIEW_PORT_MAX_WIDTH = '114rem';
 
 // Media Query limits
 export const PHONE_MAX = 580;

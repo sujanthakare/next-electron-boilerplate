@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import React, { ReactNode } from 'react'
 
 const AppLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -13,7 +13,7 @@ const AppLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
         width: '100%',
       }}
     >
-      {children}
+      <Container>{children}</Container>
     </div>
   )
 }

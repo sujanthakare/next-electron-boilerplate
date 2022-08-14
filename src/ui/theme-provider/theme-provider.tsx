@@ -1,9 +1,30 @@
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import { ReactNode } from 'react'
 
+import {
+  CssBaseline,
+  ThemeProvider as MuiThemeProvider,
+  createTheme,
+} from '@mui/material'
+
+// import './assets.css';
 import colorPalette, { ColorPalette } from './colorPalette'
 import { BoxShadows, RoundCorners, boxShadows, roundCorners } from './effects'
-import { defaultFontFamily, fontSource } from './fonts'
+
+export const defaultFontFamily = "'DM Sans', sans-serif"
+
+export const fontWeight = {
+  LIGHT: 300,
+  REGULAR: 400,
+  MEDIUM: 500,
+  BOLD: 700,
+  EXTRABOLD: 900,
+}
+
+export const lineHeight = {
+  SMALL: 1.3,
+  MEDIUM: 1.4,
+  LARGE: 1.6,
+}
 
 export interface ITheme {
   colors: ColorPalette
@@ -51,13 +72,6 @@ const theme = createTheme({
           vertical-align: baseline;
           text-decoration: none;
         }
-
-        @font-face {
-          font-family: '${defaultFontFamily}';
-          src: url(${fontSource.REGULAR}), url(${fontSource.BOLD}), url(${fontSource.ITALIC}), url(${fontSource.LIGHT}), url(${fontSource.MEDIUM});
-          font-display: swap;
-          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
-        }
       `,
     },
     MuiButton: {
@@ -82,13 +96,13 @@ const theme = createTheme({
   },
 })
 
-export const ThemeContextProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       {children}
-    </ThemeProvider>
+    </MuiThemeProvider>
   )
 }
+
+export default ThemeProvider

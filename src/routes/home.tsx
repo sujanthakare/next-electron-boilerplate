@@ -1,8 +1,8 @@
-import { useRouter } from '@/client/ui/simple-routing'
+import { useSimpleRouter } from '@/ui/simple-routing'
 import { Box, Button } from '@mui/material'
 
 const Home = () => {
-  const router = useRouter()
+  const router = useSimpleRouter()
 
   return (
     <Box>
