@@ -2,18 +2,18 @@ import { ipcMain } from 'electron'
 import { ControllerConfig, controllerMap } from './controller-map'
 
 export const register = () => {
-  ipcMain.on('action', async (event, payload: ControllerConfig) => {
-    const { controller, method = 'index' } = payload
+  ipcMain.on('action', async (event, config: ControllerConfig) => {
+    const { controller, payload } = config
     const ControllerClass = controllerMap[controller]
 
     try {
       if (ControllerClass) {
         const controllerInstance = new ControllerClass()
-        const data = await controllerInstance.handleRoute(payload)
+        const data = await controllerInstance.handleRoute(config)
         /**
          *
          */
-        event.sender.send(`${controller}-${method}-action-response`, {
+        event.sender.send(`${controller}-${payload.method}-action-response`, {
           data,
           error: null,
         })
@@ -25,7 +25,7 @@ export const register = () => {
       }
     } catch (error) {
       console.log('ERROR')
-      event.sender.send(`${controller}-${method}-action-response`, {
+      event.sender.send(`${controller}-${payload.method}-action-response`, {
         data: null,
         error: `${
           (error as Error).message

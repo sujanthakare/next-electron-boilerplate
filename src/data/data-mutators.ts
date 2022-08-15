@@ -1,25 +1,70 @@
+import storageService from '@/common/services/storage-service'
 import { execute } from '@/data-bridge'
+import { Project, User } from '@prisma/client'
 
 /**
  *
  */
-export const deleteProjectMutation = async (id: string) => {
-  return await execute({
+export const deleteProjectMutation = async (id: string) => {}
+
+/**
+ *
+ */
+
+export type CreateProjectInputs = { name: string }
+
+export type CreateProjectResponse = Project
+
+export const createProjectMutation = async (inputs: CreateProjectInputs) => {
+  const savedUser = storageService.get('user') as User
+
+  const { data, error } = await execute({
     controller: 'project',
-    method: 'createProject',
-    body: {},
+    payload: {
+      method: 'createProject',
+      body: {
+        name: inputs.name,
+        userId: savedUser.id,
+      },
+    },
   })
+
+  if (error) {
+    throw error
+  }
+
+  return data as Project
 }
 
 /**
  *
+ *
  */
 
-export type CreateProjectInputs = {
+export type CreateUserInputs = {
+  email: string
   name: string
 }
 
-export const createProjectMutation = async (inputs: CreateProjectInputs) => {
-  // TODO:
-  return { data: [] }
+export type CreateUserResponse = User
+
+export const createUserMutation = async (
+  inputs: CreateUserInputs
+): Promise<CreateUserResponse> => {
+  const { data, error } = await execute({
+    controller: 'user',
+    payload: {
+      method: 'createUser',
+      body: {
+        email: inputs.email,
+        name: inputs.name,
+      },
+    },
+  })
+
+  if (error) {
+    throw error
+  }
+
+  return data
 }

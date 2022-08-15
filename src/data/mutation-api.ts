@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { deleteProjectMutation } from './data-mutators';
+import { deleteProjectMutation } from './data-mutators'
 
 export const mutationApi = createApi({
   reducerPath: 'mutationApi',
@@ -12,11 +12,11 @@ export const mutationApi = createApi({
      */
     deleteProject: builder.mutation<any, string>({
       async queryFn(projectId) {
-        const data = await deleteProjectMutation(projectId);
-        return { data };
+        const data = await deleteProjectMutation(projectId)
+        return { data }
       },
     }),
   }),
-});
+})
 
-export default mutationApi;
+export default mutationApi
